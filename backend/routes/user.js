@@ -12,7 +12,7 @@ router.post("/register", async (req, res) => {
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
         //create new user
         const newUser = new User({
-            username: req.body.username,
+            name: req.body.name,
             email: req.body.email,
             password: hashedPassword,
 
@@ -32,9 +32,9 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         //find user
-        const user = await User.findOne({ username: req.body.username });
+        const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(400).json("wrong username")
+            return res.status(400).json("wrong email id")
         }
 
         //validate passowrd
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
         if (user && validPassword) {
             return res.status(200).json({
                 _id: user._id,
-                email: user.email
+                name: user.name
             })
         }
 
