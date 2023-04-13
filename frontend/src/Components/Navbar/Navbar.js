@@ -1,9 +1,10 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 
-function Navbar({setShowLogin,setShowRegister,currentUser,setCurrentUser}) {
+function Navbar({setShowLogin,setShowRegister,currentUser,setCurrentUser,myStorage}) {
  const handleLogout = () => {
         setCurrentUser(null);
+        myStorage.clear();
     };
     return (
         <div className="navbar">

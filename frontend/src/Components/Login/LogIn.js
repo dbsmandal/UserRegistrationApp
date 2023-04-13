@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Login({showLogin,setShowLogin,setCurrentUser, myStorage }) {
+export default function Login({showLogin,setShowLogin,setCurrentUser, myStorage,setUserDetails }) {
   const [error, setError] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -19,8 +19,10 @@ export default function Login({showLogin,setShowLogin,setCurrentUser, myStorage 
     };
     try {
       const res = await axios.post("/users/login", user);
+      setUserDetails([res.data])
+
       setCurrentUser(res.data.name);
-      myStorage.setItem('user', res.data.name);
+      myStorage.setItem('user', res.data);
       setShowLogin(false)
       setError(false);
       navigate("/")
@@ -28,7 +30,6 @@ export default function Login({showLogin,setShowLogin,setCurrentUser, myStorage 
       setError(true);
     }
   };
-
   return (
 <>
 {

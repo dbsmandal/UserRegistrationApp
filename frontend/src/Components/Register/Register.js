@@ -1,9 +1,8 @@
 import { MdCancel } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import axios from "axios";
-import { useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import "./register.css";
-
 export default function Register({ showRegister, setShowRegister }) {
   const [success, setSuccess] = useState(false);
   // const [errMeasage,setErrMeasage]=useState()
@@ -12,6 +11,7 @@ export default function Register({ showRegister, setShowRegister }) {
   const emailRef = useRef();
   const passwordRef = useRef();
 
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = {
@@ -24,12 +24,13 @@ export default function Register({ showRegister, setShowRegister }) {
       await axios.post("/users/register", newUser);
       setError(false);
       setSuccess(true);
+      
     } catch (err) {
       setError(true);
-      // setErrMeasage(err)
     }
   };
-  // console.log("err msg", errMeasage)
+
+ 
   return (
     <>
       {

@@ -9,18 +9,19 @@ import Home from './Pages/Home';
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(true);
+  const [userDetails,setUserDetails]=useState()
   const myStorage = window.localStorage;
   const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
-console.log(myStorage,currentUser)
+  console.log(myStorage.getItem("user"))
   return (
     <BrowserRouter>
-    <Navbar setShowLogin={setShowLogin} setShowRegister={setShowRegister} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+    <Navbar setShowLogin={setShowLogin} setShowRegister={setShowRegister} currentUser={currentUser} setCurrentUser={setCurrentUser} myStorage={myStorage}/>
     <Routes>
       {
-        currentUser &&  <Route  path='/' exact element={<Home />}/>
+        currentUser &&  <Route exact path='/'  element={<Home userDetails={userDetails} />}/>
       }
       
-      <Route  path='/login'  element={<Login showLogin={showLogin} setShowLogin={setShowLogin} setCurrentUser={setCurrentUser} myStorage={myStorage}/>}/>
+      <Route  path='/login'  element={<Login showLogin={showLogin} setShowLogin={setShowLogin} setCurrentUser={setCurrentUser} myStorage={myStorage} setUserDetails={setUserDetails}/>}/>
 
       <Route  path='/register' element={<Register showRegister={showRegister} setShowRegister={setShowRegister}/>}/>
 
