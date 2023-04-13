@@ -1,0 +1,60 @@
+
+.navbar {
+    height: 60px;
+}
+
+.navbar_container {
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+}
+.navbar_container_logo{
+    display:flex;
+    text-align:center;
+    flex:1;
+}
+.logo{
+    margin: 10px;
+   height: 50px;
+}
+.navbar_container_buttons{
+    flex:1;
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+
+}
+
+.buttons,
+.logout {
+    cursor: pointer;
+    margin-left:25px;
+}
+
+.button {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.logout {
+    background-color: tomato;
+}
+
+.login {
+    background-color: teal;
+    margin-right: 10px;
+}
+
+.register {
+    background-color: slateblue;
+} 
